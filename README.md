@@ -1,22 +1,20 @@
-# COPA Dataset in Japanese
-[Choice of Plausible Alternatives (COPA) Dataset](https://people.ict.usc.edu/~gordon/copa.html) translated into Japanese.
+# Japanese COPA Dataset
 
-## About
-COPA is a dataset for an evaluation of commonsense causal reasoning.
-We asked professional translators to translate the whole dataset from English to Japanese.
-For more information about COPA, please refer to [the original description](https://people.ict.usc.edu/~gordon/copa.html).
+[Choice of Plausible Alternatives (COPA)](https://people.ict.usc.edu/~gordon/copa.html) is a dataset for open-domain commonsense causal reasoning.
+This dataset (Japanese COPA) provides Japanese translations of all sentences (premise, answer1, and answer2) in the original English dataset.
 
 ## Dataset Description
-The dataset is created in [JSON Lines](https://jsonlines.org/) format.
+
+Each line of the [dataset](COPA-ja.jsonl) presents a question (premimse, answer1, answer2, etc) in [JSON Lines](https://jsonlines.org/) format.
 
 | Name | Description |
 | ---- | ----------- |
 | id | Question id |
 | premise | Premise for the question |
-| asks_for | Type of the answer （原因 or 結果） |
-| correct_answer | Correct answer number (1 or 2)|
-| answer1 | First answer |
-| answer2 | Second answer |
+| asks_for | Type of the answer: 原因 (reason) or 結果 (result) |
+| correct_answer | Correct answer: 1 or 2|
+| answer1 | Answer 1 |
+| answer2 | Answer 2 |
 
 ```
 {
@@ -29,24 +27,24 @@ The dataset is created in [JSON Lines](https://jsonlines.org/) format.
 }
 ```
 
-Questions with IDs from 1 to 500 are dev datasets, and from 501 to 1000 are test datasets.
+Questions with IDs ranging from 1 to 500 provide the development set, and those from 501 to 1000 provide the test set.
 
 ### Anaphora resolution
-Premise, answer1, and answer2 have some pronouns like 彼(he, him, his), 彼女(she, her), それ(it), 彼/彼女ら(they, their, them).
-These anaphoras are resolved and described in the dataset as follows:
+Some premises and answers have Japanese pronouns such as 彼 (he, him, his), 彼女 (she, her), それ (it), and 彼/彼女ら (they, their, them).
+Anaphoras of these pronouns were resolved and described in the dataset.
 
 Format: \[pronoun](antecedent)
 
-example (id: 3)
+Example (id: 3)
 - Premise: 女性たちは会ってコーヒーを飲みに行った。
 - Answer(原因): \[彼女ら](女性たち)は互いの近況を語り合いたかった。
 
 
-example (id: 14)
+Example (id: 14)
 - Premise: 犯罪者が仮釈放の条件に違反した。
 - Answer(結果): \[彼女](犯罪者)は刑務所に送り返された。
 
-Also, you can obtain the sentence only with pronoun or antecedent by Python code as follows:
+We can replace pronouns with antecedents by running the Python code:
 ```python
 import re
 p = re.compile(r'\[([^]]*)\]\(([^)]*)\)')
