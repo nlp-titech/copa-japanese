@@ -5,7 +5,7 @@ This dataset (Japanese COPA) provides Japanese translations of all sentences (pr
 
 ## Dataset Description
 
-Each line of the [dataset](COPA-ja.jsonl) presents a question (premimse, answer1, answer2, etc) in [JSON Lines](https://jsonlines.org/) format.
+Each line of the [dataset](COPA-ja.jsonl) presents a question (premise, answer1, answer2, etc) in [JSON Lines](https://jsonlines.org/) format.
 
 | Name | Description |
 | ---- | ----------- |
